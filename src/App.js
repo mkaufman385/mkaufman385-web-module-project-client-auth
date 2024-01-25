@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import {
-  // BrowserRouter as Router,
+  BrowserRouter as Router,
   Routes,
   Route,
   useNavigate,
@@ -32,10 +32,18 @@ function App() {
           Logout
         </Link>
       </header>
+
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
-        <PrivateRoute path="/friends" element={<FriendsList />} />
+        <Route
+          path="/friends"
+          element={
+            <PrivateRoute>
+              <FriendsList />
+            </PrivateRoute>
+          }
+        />
         <Route path="/friends/add" element={<AddFriend />} />
         <Route path="/logout" element={<Logout />} />
       </Routes>

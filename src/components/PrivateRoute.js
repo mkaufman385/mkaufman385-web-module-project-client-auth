@@ -39,9 +39,8 @@ import { Route, Routes, Navigate } from "react-router-dom";
 
 const PrivateRoute = ({ element: Element, ...rest }) => {
   if (localStorage.getItem("token")) {
-    return <Route {...rest}>{Element && <Element />}</Route>;
+    return <Route {...rest} element={<Element />} />;
   } else {
-    // Redirect to login if there's no valid token
     return <Navigate to="/login" replace />;
   }
 };
