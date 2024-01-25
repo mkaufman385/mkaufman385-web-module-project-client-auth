@@ -1,34 +1,30 @@
 import { useState } from "react";
 import React from "react";
-import { useNavigate, useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+// import { useNavigate as useHistory } from "react-router-dom";
 import axios from "axios";
 
 const Login = () => {
-  // const { push } = useHistory();
+  const navigate = useNavigate();
   const [cred, setCred] = useState({
     username: "",
     password: "",
   });
 
-  const navigate = useNavigate();
-
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/api/login", cred)
+      .post("http://localhost:9000/api/login", cred)
       .then((resp) => {
-        localStorage.setItem("token", resp.payload);
-        // push("/friends");
-        // console.log("Result: ", resp);
-        // navigate("/login");
+        console.log("RESP:", resp);
+        localStorage.setItem("token", resp.data.token);
+        // console.log("Response: ", resp.data);
+        navigate("/friends");
       })
       .catch((err) => {
-        console.log("Err: ", err);
+        console.log("Error: ", err);
       });
   };
-
-  // navigate("/login");
-  // };
 
   const handleChange = (e) => {
     setCred({
