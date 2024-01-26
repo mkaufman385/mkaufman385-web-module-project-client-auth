@@ -19,6 +19,7 @@ const Login = () => {
         console.log("RESP:", resp);
         localStorage.setItem("token", resp.data.token);
         // console.log("Response: ", resp.data);
+        console.log("handleSubmit");
         navigate("/friends");
       })
       .catch((err) => {

@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Logout = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("Token");
+    console.log("useEffect for token", token);
     axios
       .post(
         "http://localhost:9000/api/logout",
@@ -16,8 +17,8 @@ const Logout = () => {
           },
         }
       )
-      .then((resp) => {
-        localStorage.removeItem("token");
+      .then((res) => {
+        localStorage.removeItem("Token");
         navigate("/login");
       })
       .catch((err) => {

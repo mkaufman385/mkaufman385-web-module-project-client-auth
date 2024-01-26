@@ -36,7 +36,21 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
-        <Route
+
+        <Route element={<PrivateRoute />}>
+          <Route exact path="/friends" element={<FriendsList />} />
+          <Route exact path="/friends/add" element={<AddFriend />} />
+          <Route exact path="/logout" element={<Logout />} />
+        </Route>
+      </Routes>
+    </div>
+  );
+}
+
+export default App;
+
+{
+  /* <Route
           path="/friends"
           element={
             <PrivateRoute>
@@ -45,10 +59,24 @@ function App() {
           }
         />
         <Route path="/friends/add" element={<AddFriend />} />
-        <Route path="/logout" element={<Logout />} />
-      </Routes>
-    </div>
-  );
+        <Route path="/logout" element={<Logout />} /> */
 }
 
-export default App;
+// MY CODE I REMOVED
+{
+  /* <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/friends"
+          element={
+            <PrivateRoute>
+              <FriendsList />
+            </PrivateRoute>
+          }
+        />
+
+        <Route path="/friends/add" element={<AddFriend />} />
+        <Route path="/logout" element={<Logout />} />
+      </Routes> */
+}
