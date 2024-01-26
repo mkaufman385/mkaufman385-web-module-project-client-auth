@@ -11,15 +11,28 @@ const Login = () => {
     password: "",
   });
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   axios
+  //     .post("http://localhost:9000/api/login", cred)
+  //     .then((resp) => {
+  //       console.log("RESP:", resp);
+  //       localStorage.setItem("token", resp.data.token);
+  //       // console.log("Response: ", resp.data);
+  //       console.log("handleSubmit");
+  //       navigate("/friends");
+  //     })
+  //     .catch((err) => {
+  //       console.log("Error: ", err);
+  //     });
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:9000/api/login", cred)
       .then((resp) => {
-        console.log("RESP:", resp);
         localStorage.setItem("token", resp.data.token);
-        // console.log("Response: ", resp.data);
-        console.log("handleSubmit");
         navigate("/friends");
       })
       .catch((err) => {
